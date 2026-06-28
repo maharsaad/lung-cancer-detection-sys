@@ -197,3 +197,8 @@ The Lung Cancer Detection System successfully demonstrates the application of de
 - Flask
 - HTML / CSS / JavaScript
 - VS Code
+
+## Author
+
+Mahar Saad  
+GitHub: https://github.com/maharsaad
