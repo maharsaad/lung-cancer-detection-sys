@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lung Cancer Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapperAD" class="wrapperAdjust">
+        <div class="wrapper">
+            <div class="main-content">
+                <header>
+                    <h1>Lung Cancer Detection</h1>
+                    <p>Upload a histopathological image of lung tissue for AI-based classification.</p>
+                </header>
+                <!-- Image upload container -->
+                <div class="upload-container" onclick="triggerFileInput()" ondrop="handleDrop(event)" ondragover="allowDrop(event)">
+                    <div class="plus-sign">+</div>
+                    <input type="file" id="fileInput" name="image" accept="image/*" required onchange="handleImageSelection(event)" />
+                </div>
+                <!-- Image guidelines -->
+                <div id="guidelines" class="guidelines">
+                    <img src="{{ url_for('static', filename='images/0034.jpg') }}" alt="Guideline 1" />
+                    <img src="{{ url_for('static', filename='images/0024.jpg') }}" alt="Guideline 2" />
+                    <img src="{{ url_for('static', filename='images/0012.jpg') }}" alt="Guideline 3" />
+                </div>
+                <!-- Classify button -->
+                <button id="classifyButton" class="btn-submit" onclick="classifyImage()">Classify</button>
+                <!-- Loading bar -->
+                <div id="loadingBar" class="loading-bar" style="display: none">
+                    <div class="loading-bar-inner"></div>
+                </div>
+                <!-- Result -->
+                <div id="result" class="result">
+                    <h3>Prediction</h3>
+                    <p id="prediction" class="prediction-text"></p>
+                    <div class="result-image">
+                        <img id="uploadedImage" src="" alt="UploadedImage" />
+                    </div>
+                    <button id="seeMoreButton" class="btn-see-more" onclick="toggleDetails()">See More</button>
+                </div>
+            </div>
+            <!-- Sliding Details (Initially hidden) -->
+            <div id="slidingDetails" class="sliding-details">
+                <h4>Details</h4>
+                <div class="slidingDetails-img">
+                    <img src="{{ url_for('static', filename='images/accuracy.jpg') }}" style="margin-bottom: 12px" alt="Accuracy Graph" />
+                    <img src="{{ url_for('static', filename='images/loss.jpg') }}" style="margin-bottom: 12px" alt="Loss Graph" />
+                    <h3>Confidence Level</h3>
+                    <p style="background-color: rgb(223, 223, 223); padding: 10px; margin-top: 5px" id="confidence"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
